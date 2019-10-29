@@ -1,0 +1,10 @@
+h1 {
+  font: "monaco";
+  font-size: 350%;
+  margin: 0.8%;
+  color: rgb(61, 60, 60);
+}
+
+body {
+  background-color: beige;
+}
