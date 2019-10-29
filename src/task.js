@@ -8,12 +8,16 @@ class Task extends React.Component {
         <div className="col-6">{this.props.text}</div>
         <div className="col-3">
           <button type="button" className="btn btn-light">
-            Done
+            <i className="fa fa-trash"></i>
           </button>
         </div>
         <div className="col-3">
           <button type="button" className="btn btn-dark">
-            Delete
+            {this.props.completed ? (
+              <i className="fa fa-undo"></i>
+            ) : (
+              <i className="fa fa-check greenCheck"></i>
+            )}
           </button>
         </div>
       </div>

@@ -25,22 +25,23 @@ class AddTask extends React.Component {
       <section>
         <div className="row p-2">
           <div className="col-8">
+            <label for="exampleFormControlTextarea1"></label>
             <input
-              id="addItemInput"
-              type="text"
-              className="form-control"
+              type="email"
+              className="form-control addTaskTextArea"
+              aria-describedby="emailHelp"
               placeholder="E.g. take out bins"
               value={this.state.newTaskText}
               onChange={this.updateTaskText}
-            />
+            ></input>
           </div>
           <div className="mt-3 mb-3">
             <button
               id="addButton"
-              className="btn btn-light"
+              className="btn btn-dark addTaskButton"
               onClick={this.handleClick}
             >
-              Add to list
+              <i className="fa fa-plus"> </i>{" "}
             </button>
           </div>
         </div>

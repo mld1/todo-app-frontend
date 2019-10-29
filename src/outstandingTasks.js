@@ -6,7 +6,7 @@ class OutstandingTasks extends React.Component {
     return (
       <div className="row p-2">
         <div className="col-12">
-          You have {this.props.count} outstanding tasks
+          You have <strong>{this.props.count}</strong> outstanding tasks:
         </div>
       </div>
     );

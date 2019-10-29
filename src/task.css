@@ -1,11 +1,20 @@
 .grey {
-  background-color: rgb(133, 136, 141);
-  box-shadow: 5px 5px 5px #cecbcb;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 5px #000000;
+  outline: 2px solid #000000;
 }
 
 .rowmargin {
   margin: 5%;
-  color: beige;
+  color: rgb(0, 0, 0);
   margin-bottom: 0.5%;
   margin-top: 0.5%;
+}
+
+.addTaskButton {
+  margin-top: 20%;
+}
+
+.addTaskTextArea {
+  outline: 2px solid #000000;
 }
