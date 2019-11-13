@@ -6,7 +6,8 @@ class AddTask extends React.Component {
   //initial state
   state = {
     newTaskText: "",
-    dateSelected: moment().format("YYYY-MM-DD")
+    dateSelected: moment().format("YYYY-MM-DD"),
+    showModal: false
   };
 
   updateTaskText = event => {
@@ -20,7 +21,9 @@ class AddTask extends React.Component {
       typeof this.state.newTaskText !== "string" ||
       this.state.newTaskText == ""
     ) {
-      alert("Please enter text");
+      this.setState({
+        showModal: true
+      });
     } else {
       this.props.addTaskFunc(this.state.newTaskText, this.state.dateSelected);
       this.setState({
@@ -28,7 +31,11 @@ class AddTask extends React.Component {
       });
     }
   };
-
+  handleModalDismiss = () => {
+    this.setState({
+      showModal: false
+    });
+  };
   handleDateChange = e => {
     this.setState({
       dateSelected: e.target.value
@@ -36,9 +43,47 @@ class AddTask extends React.Component {
   };
 
   render() {
-    // JSX is NOT HTML
     return (
       <div className="row p-2">
+        <div
+          className={this.state.showModal ? "modal isVisible" : "modal"}
+          tabindex="-1"
+          role="dialog"
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
+                  OI!! You didn't put in any text you MUPPET
+                </h5>
+                <button
+                  type="button"
+                  className="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  onClick={this.handleModalDismiss}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p>NOT AGAIN!!</p>
+
+                <p> Sort it out.</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  onClick={this.handleModalDismiss}
+                >
+                  Go Away
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="col-9">
           <input
             type="text"
