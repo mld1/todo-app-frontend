@@ -126,7 +126,7 @@ class App extends React.Component {
     });
 
     return (
-      <div className="Container">
+      <div className="container">
         <header>
           <h1>
             <span className="h1Letter">To Do </span>
@@ -141,21 +141,25 @@ class App extends React.Component {
             <br className="grey"></br>
 
             <AddTask addTaskFunc={this.addTask} />
-            <div className="row">
-              <div className="col-4"></div>
-              <div className="col-2">
-                <button type="button" class="btn btn-secondary btn-sm">
-                  Sort by date created
-                </button>
-              </div>
-              <div className="col-2">
-                <button type="button" class="btn btn-secondary btn-sm">
-                  Sort by urgency
-                </button>
-              </div>
-            </div>
-            {/* <br className="grey"></br> */}
-            <OutstandingTasks count={this.state.tasks.length} />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-2">
+            <button type="button" class="btn btn-secondary btn-sm">
+              Sort by date created
+            </button>
+          </div>
+          <div className="col-2">
+            <button type="button" class="btn btn-secondary btn-sm">
+              Sort by urgency
+            </button>
+          </div>
+        </div>
+        {/* <br className="grey"></br> */}
+        <OutstandingTasks count={this.state.tasks.length} />
+        <div className="row">
+          <div className="col-12">
             {incompleteTasks.map(task => {
               return (
                 <Task
