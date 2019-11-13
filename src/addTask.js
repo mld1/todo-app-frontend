@@ -21,11 +21,12 @@ class AddTask extends React.Component {
       this.state.newTaskText == ""
     ) {
       alert("Please enter text");
+    } else {
+      this.props.addTaskFunc(this.state.newTaskText, this.state.dateSelected);
+      this.setState({
+        newTaskText: ""
+      });
     }
-    this.props.addTaskFunc(this.state.newTaskText, this.state.dateSelected);
-    this.setState({
-      newTaskText: ""
-    });
   };
 
   handleDateChange = e => {
