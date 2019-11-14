@@ -1,6 +1,7 @@
 import React from "react";
 import "./task.css";
 import moment from "moment";
+import FlipMove from "react-flip-move";
 
 class Task extends React.Component {
   updateTasks = task => {
@@ -11,21 +12,18 @@ class Task extends React.Component {
     });
   };
   handleDelete = e => {
-    console.log("Button was clicked", e);
     this.props.deleteTaskFunc(this.props.id);
   };
 
   handleComplete = e => {
-    console.log("Button was clicked", e);
     this.props.completedTaskFunc(this.props.id);
   };
 
   handleUndo = e => {
-    console.log("Button was clicked", e);
     this.props.undoTaskFunc(this.props.id);
   };
 
-  toggleSortByDate = e => {};
+  // toggleSortByDate = e => {};
 
   render() {
     return (

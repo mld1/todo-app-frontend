@@ -4,12 +4,10 @@ import "./App.css";
 class OutstandingTasks extends React.Component {
   render() {
     return (
-      <div className="row p-2">
-        <div className="col-12">
-          <h4 className="rowmargin">
-            You have <strong>{this.props.count}</strong> tasks:{" "}
-          </h4>
-        </div>
+      <div className="col-4">
+        <h4 className="rowmargin">
+          You have <strong>{this.props.count}</strong> tasks:{" "}
+        </h4>
       </div>
     );
   }

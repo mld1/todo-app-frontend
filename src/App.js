@@ -2,10 +2,11 @@ import React from "react";
 import Task from "./task";
 import AddTask from "./addTask";
 import OutstandingTasks from "./outstandingTasks";
-import "./task.js";
 import uuid from "uuid/v4";
 import "./App.css";
 import moment from "moment";
+import Dropdown from "./dropdown";
+import FlipMove from "react-flip-move";
 
 class App extends React.Component {
   state = {
@@ -39,18 +40,15 @@ class App extends React.Component {
         dueBy: "2019-11-17"
       }
     ],
-    completedTasks: []
+    incompleteSortOption: "none"
   };
 
   addTask = (taskText, dueByDate) => {
-    //create new task (with default completed and date properties)
-    //"buy shoes"
     const newTask = {
       text: taskText,
       completed: false,
       date: moment().format("dddd, MMMM Do YYYY"),
       dueBy: dueByDate,
-      //create a random id - hash or uuid
       id: uuid()
     };
 
@@ -109,6 +107,12 @@ class App extends React.Component {
     return count;
   };
 
+  sortBy = option => {
+    this.setState({
+      incompleteSortOption: option
+    });
+  };
+
   // toggleListSort = tasks => {
   //   let taskList = [];
   //   if(let i = 0; i < tasks.length; i++){
@@ -134,6 +138,10 @@ class App extends React.Component {
               <u>List</u>
             </span>
           </h1>
+          <h6>
+            Don't try to be like Jackie. There is only one Jackie. Study
+            computers instead.
+          </h6>
         </header>
         <br className="grey"></br>
         <div className="row">
@@ -143,37 +151,31 @@ class App extends React.Component {
             <AddTask addTaskFunc={this.addTask} />
           </div>
         </div>
-        <div className="row">
-          <div className="col-4"></div>
-          <div className="col-2">
-            <button type="button" class="btn btn-secondary btn-sm">
-              Sort by date created
-            </button>
-          </div>
-          <div className="col-2">
-            <button type="button" class="btn btn-secondary btn-sm">
-              Sort by urgency
-            </button>
-          </div>
+        <div className="row p-2">
+          <OutstandingTasks count={this.state.tasks.length} />
+          <Dropdown
+            sortByFunc={this.sortBy}
+            sortOption={this.state.incompleteSortOption}
+          />
         </div>
-        {/* <br className="grey"></br> */}
-        <OutstandingTasks count={this.state.tasks.length} />
         <div className="row">
           <div className="col-12">
-            {incompleteTasks.map(task => {
-              return (
-                <Task
-                  text={task.text}
-                  completed={task.completed}
-                  key={task.id}
-                  deleteTaskFunc={this.deleteTask}
-                  completedTaskFunc={this.completeTask}
-                  id={task.id}
-                  date={task.date}
-                  dueBy={task.dueBy}
-                />
-              );
-            })}
+            <FlipMove duration={250} easing="ease-out">
+              {incompleteTasks.map(task => {
+                return (
+                  <Task
+                    text={task.text}
+                    completed={task.completed}
+                    key={task.id}
+                    deleteTaskFunc={this.deleteTask}
+                    completedTaskFunc={this.completeTask}
+                    id={task.id}
+                    date={task.date}
+                    dueBy={task.dueBy}
+                  />
+                );
+              })}
+            </FlipMove>
           </div>
         </div>
 
@@ -181,20 +183,22 @@ class App extends React.Component {
           <div className="col-12">
             <br className="grey"></br>
             <br className="grey"></br>
-            {completedTasks.map(task => {
-              return (
-                <Task
-                  text={task.text}
-                  completed={task.completed}
-                  key={task.id}
-                  deleteTaskFunc={this.deleteTask}
-                  undoTaskFunc={this.undoTask}
-                  id={task.id}
-                  date={task.date}
-                  dueBy={task.dueBy}
-                />
-              );
-            })}
+            <FlipMove duration={250} easing="ease-out">
+              {completedTasks.map(task => {
+                return (
+                  <Task
+                    text={task.text}
+                    completed={task.completed}
+                    key={task.id}
+                    deleteTaskFunc={this.deleteTask}
+                    undoTaskFunc={this.undoTask}
+                    id={task.id}
+                    date={task.date}
+                    dueBy={task.dueBy}
+                  />
+                );
+              })}
+            </FlipMove>
           </div>
         </div>
       </div>
