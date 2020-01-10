@@ -41,26 +41,9 @@ class Task extends React.Component {
               : "col-4 redText"
           }
         >
-          {this.props.text}
+          <strong> {this.props.text}</strong>
         </div>
-        <div
-          className={
-            moment(this.props.dueBy).isAfter(moment())
-              ? "col-2"
-              : "col-2 redText"
-          }
-        >
-          <p>Created {moment(this.props.date).format("YYYY-MM-DD")}</p>
-        </div>
-        <div
-          className={
-            moment(this.props.dueBy).isAfter(moment())
-              ? "col-2"
-              : "col-2 redText"
-          }
-        >
-          <p>Due {moment(this.props.dueBy, "YYYY-MM-DD").fromNow()}</p>
-        </div>
+
         <div className="col-2">
           <button
             type="button"
@@ -81,6 +64,24 @@ class Task extends React.Component {
               ></i>
             )}
           </button>
+        </div>
+        <div
+          className={
+            moment(this.props.dueBy).isAfter(moment())
+              ? "col-2"
+              : "col-2 redText"
+          }
+        >
+          <p>{moment(this.props.date).format("YYYY-MM-DD")}</p>
+        </div>
+        <div
+          className={
+            moment(this.props.dueBy).isAfter(moment())
+              ? "col-2"
+              : "col-2 redText"
+          }
+        >
+          <p>Due {moment(this.props.dueBy, "YYYY-MM-DD").fromNow()}</p>
         </div>
       </div>
     );

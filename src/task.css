@@ -34,3 +34,7 @@
 .redText {
   color: red;
 }
+
+.clear {
+  background: transparent;
+}
