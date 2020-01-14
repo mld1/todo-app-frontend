@@ -3,7 +3,6 @@ import Task from "./task";
 import axios from "axios";
 import AddTask from "./addTask";
 import OutstandingTasks from "./outstandingTasks";
-import uuid from "uuid/v4";
 import "./App.css";
 import moment from "moment";
 import Dropdown from "./dropdown";
@@ -11,7 +10,8 @@ import FlipMove from "react-flip-move";
 
 class App extends React.Component {
   state = {
-    tasks: []
+    tasks: [],
+    incompleteSortOption: ""
   };
 
   componentDidMount() {
@@ -28,50 +28,16 @@ class App extends React.Component {
       });
   }
 
-  // state = {
-  //   // tasks: [
-  //   //   {
-  //   //     text: "Pet cat",
-  //   //     completed: true,
-  //   //     date: "2019-10-25",
-  //   //     id: uuid(),
-  //   //     dueBy: "2019-11-20"
-  //   //   },
-  //   //   {
-  //   //     text: "Jump rope",
-  //   //     completed: false,
-  //   //     date: "2019-10-20",
-  //   //     id: uuid(),
-  //   //     dueBy: "2019-11-11"
-  //   //   },
-  //   //   {
-  //   //     text: "Rob bank",
-  //   //     completed: true,
-  //   //     date: "2019-08-26",
-  //   //     id: uuid(),
-  //   //     dueBy: "2019-12-16"
-  //   //   },
-  //   //   {
-  //   //     text: "Hide cash",
-  //   //     completed: false,
-  //   //     date: "2019-08-26",
-  //   //     id: uuid(),
-  //   //     dueBy: "2019-11-17"
-  //   // //   }
-  //   // ],
-  //   // incompleteSortOption: "none"
-  // };
-
   addTask = (taskText, dueByDate) => {
     const newTask = {
-      Text: taskText,
       Completed: false,
-      DateCreated: moment().format("dddd, MMMM Do YYYY"),
+      DateCreated: moment().format("YYYY-MM-DD"),
       DateDue: dueByDate,
+      Text: taskText,
       UserId: 1
-      // TaskId: uuid()
     };
 
+    console.log("from axios addTask " + newTask.DateCreated);
     const tasksCopy = this.state.tasks.slice();
 
     axios
@@ -175,14 +141,11 @@ class App extends React.Component {
   };
 
   sortBy = option => {
-    this.setState({
-      incompleteSortOption: option
-    });
-    const updatedTasks = this.state.tasks.sort((a, b) => {
+    const updatedTasks = this.state.tasks.sort(function(a, b) {
       if (option === "created") {
-        return a.date < b.date ? -1 : 1;
+        return a.DateCreated < b.DateCreated ? -1 : 1;
       } else if (option === "due") {
-        return a.dueBy < b.dueBy ? -1 : 1;
+        return a.DateDue < b.DateDue ? -1 : 1;
       }
     });
     this.setState({

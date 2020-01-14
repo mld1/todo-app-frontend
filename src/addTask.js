@@ -1,12 +1,11 @@
 import React from "react";
 import "./App.css";
-import moment from "moment";
 
 class AddTask extends React.Component {
   //initial state
   state = {
     newTaskText: "",
-    dateSelected: moment().format("YYYY-MM-DD"),
+    dateSelected: "",
     showModal: false
   };
 
@@ -19,7 +18,7 @@ class AddTask extends React.Component {
   handleClick = () => {
     if (
       typeof this.state.newTaskText !== "string" ||
-      this.state.newTaskText == ""
+      this.state.newTaskText === ""
     ) {
       this.setState({
         showModal: true
@@ -47,14 +46,14 @@ class AddTask extends React.Component {
       <div className="row p-2">
         <div
           className={this.state.showModal ? "modal isVisible" : "modal"}
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">
-                  OI!! You didn't put in any text you MUPPET
+                  Oops, you forgot to add the task content
                 </h5>
                 <button
                   type="button"
@@ -67,9 +66,11 @@ class AddTask extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <p>NOT AGAIN!!</p>
-
-                <p> Sort it out.</p>
+                <p>
+                  {" "}
+                  Do not let circumstances control you. You change your
+                  circumstances. - JC
+                </p>
               </div>
               <div className="modal-footer">
                 <button
@@ -78,13 +79,13 @@ class AddTask extends React.Component {
                   data-dismiss="modal"
                   onClick={this.handleModalDismiss}
                 >
-                  Go Away
+                  Ok
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div className="col-9">
+        <div className="col-lg-9 col-sm-6">
           <input
             type="text"
             className="form-control addTaskTextArea"
@@ -94,7 +95,7 @@ class AddTask extends React.Component {
             onChange={this.updateTaskText}
           ></input>
         </div>
-        <div className="col-2">
+        <div className="col-lg-2 col-sm-4">
           <div className="form-group mx-sm-3 mb-2">
             <input
               className="form-control"
@@ -105,7 +106,7 @@ class AddTask extends React.Component {
           </div>
         </div>
 
-        <div className="col-1">
+        <div className="col-1 col-md-2">
           {/* <div className="mt-3 mb-3"> */}
           <button
             id="addButton"

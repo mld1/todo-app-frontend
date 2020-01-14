@@ -1,7 +1,6 @@
 import React from "react";
 import "./task.css";
 import moment from "moment";
-import FlipMove from "react-flip-move";
 
 class Task extends React.Component {
   updateTasks = task => {
