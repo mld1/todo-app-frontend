@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/todo-app-frontend/static/css/main.e7dd65f1.chunk.css",
+    "main.js": "/todo-app-frontend/static/js/main.c71f4c60.chunk.js",
+    "main.js.map": "/todo-app-frontend/static/js/main.c71f4c60.chunk.js.map",
+    "runtime-main.js": "/todo-app-frontend/static/js/runtime-main.a10bab83.js",
+    "runtime-main.js.map": "/todo-app-frontend/static/js/runtime-main.a10bab83.js.map",
+    "static/js/2.702d1305.chunk.js": "/todo-app-frontend/static/js/2.702d1305.chunk.js",
+    "static/js/2.702d1305.chunk.js.map": "/todo-app-frontend/static/js/2.702d1305.chunk.js.map",
+    "index.html": "/todo-app-frontend/index.html",
+    "precache-manifest.38c248393c2ae6562dc0552d6f1992ba.js": "/todo-app-frontend/precache-manifest.38c248393c2ae6562dc0552d6f1992ba.js",
+    "service-worker.js": "/todo-app-frontend/service-worker.js",
+    "static/css/main.e7dd65f1.chunk.css.map": "/todo-app-frontend/static/css/main.e7dd65f1.chunk.css.map",
+    "static/media/App.css": "/todo-app-frontend/static/media/JackieChan2.be7c5216.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a10bab83.js",
+    "static/js/2.702d1305.chunk.js",
+    "static/css/main.e7dd65f1.chunk.css",
+    "static/js/main.c71f4c60.chunk.js"
+  ]
+}
